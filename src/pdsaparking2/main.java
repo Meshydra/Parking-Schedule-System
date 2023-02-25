@@ -10,15 +10,18 @@ package pdsaparking2;
  */
 public class main {
 
-    /**
-     * @param args the command line arguments
-     */
+    // creates a new object to save data
+    public static LinkedList tempData = new LinkedList();
+    
     public static void main(String[] args) {
         // TODO code application logic here
         loadingGUI LS1 = new loadingGUI();
         LS1.setVisible(true);
         loadingGUI.fill();
         LS1.setVisible(false);
+        
+        
+
     }
     
 }

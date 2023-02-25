@@ -4,17 +4,22 @@
  */
 package pdsaparking2;
 
+import static pdsaparking2.main.tempData;
+
 /**
  *
  * @author DELL
  */
 public class viewPreviousGUI extends javax.swing.JFrame {
-
+// global variable to move the undecorated jframe
+    int xMouse;
+    int yMouse;
     /**
      * Creates new form previousNode
      */
     public viewPreviousGUI() {
         initComponents();
+        load();
     }
 
     /**
@@ -26,157 +31,234 @@ public class viewPreviousGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        lblName = new javax.swing.JLabel();
+        lblLicense = new javax.swing.JLabel();
+        lblTime = new javax.swing.JLabel();
+        lblHourly = new javax.swing.JLabel();
+        lblTotal = new javax.swing.JLabel();
+        chgName = new javax.swing.JLabel();
+        chgLicense = new javax.swing.JLabel();
+        chgTime = new javax.swing.JLabel();
+        chgHourly = new javax.swing.JLabel();
+        chgTotal = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        lblParkedTime = new javax.swing.JLabel();
+        chgParkedTime = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAutoRequestFocus(false);
         setBackground(new java.awt.Color(255, 255, 0));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setUndecorated(true);
+        setResizable(false);
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 153));
-        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        jLabel1.setText("Name :");
+        jPanel1.setBackground(new java.awt.Color(58, 58, 77));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.setDoubleBuffered(false);
 
-        jLabel2.setBackground(new java.awt.Color(255, 255, 153));
-        jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        jLabel2.setText("Vehicle No :");
+        lblName.setBackground(new java.awt.Color(255, 255, 153));
+        lblName.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        lblName.setForeground(new java.awt.Color(255, 255, 255));
+        lblName.setText("Name :");
 
-        jLabel3.setBackground(new java.awt.Color(255, 255, 153));
-        jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        jLabel3.setText("License No :");
+        lblLicense.setBackground(new java.awt.Color(255, 255, 153));
+        lblLicense.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        lblLicense.setForeground(new java.awt.Color(255, 255, 255));
+        lblLicense.setText("License No :");
 
-        jLabel4.setBackground(new java.awt.Color(255, 255, 153));
-        jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        jLabel4.setText("Time :");
+        lblTime.setBackground(new java.awt.Color(255, 255, 153));
+        lblTime.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        lblTime.setForeground(new java.awt.Color(255, 255, 255));
+        lblTime.setText("Time :");
 
-        jLabel5.setBackground(new java.awt.Color(255, 255, 153));
-        jLabel5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        jLabel5.setText("Hourly Rate:");
+        lblHourly.setBackground(new java.awt.Color(255, 255, 153));
+        lblHourly.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        lblHourly.setForeground(new java.awt.Color(255, 255, 255));
+        lblHourly.setText("Hourly Rate:");
 
-        jLabel6.setBackground(new java.awt.Color(255, 255, 153));
-        jLabel6.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        jLabel6.setText("Total Price :");
+        lblTotal.setBackground(new java.awt.Color(255, 255, 153));
+        lblTotal.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        lblTotal.setForeground(new java.awt.Color(255, 255, 255));
+        lblTotal.setText("Total Price :");
 
-        jLabel7.setBackground(new java.awt.Color(255, 255, 153));
-        jLabel7.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        jLabel7.setText("jLabel7");
+        chgName.setBackground(new java.awt.Color(255, 255, 153));
+        chgName.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        chgName.setForeground(new java.awt.Color(255, 255, 255));
+        chgName.setText("jLabel7");
 
-        jLabel8.setBackground(new java.awt.Color(255, 255, 153));
-        jLabel8.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        jLabel8.setText("jLabel8");
+        chgLicense.setBackground(new java.awt.Color(255, 255, 153));
+        chgLicense.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        chgLicense.setForeground(new java.awt.Color(255, 255, 255));
+        chgLicense.setText("jLabel9");
 
-        jLabel9.setBackground(new java.awt.Color(255, 255, 153));
-        jLabel9.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        jLabel9.setText("jLabel9");
+        chgTime.setBackground(new java.awt.Color(255, 255, 153));
+        chgTime.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        chgTime.setForeground(new java.awt.Color(255, 255, 255));
+        chgTime.setText("jLabel10");
 
-        jLabel10.setBackground(new java.awt.Color(255, 255, 153));
-        jLabel10.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        jLabel10.setText("jLabel10");
+        chgHourly.setBackground(new java.awt.Color(255, 255, 153));
+        chgHourly.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        chgHourly.setForeground(new java.awt.Color(255, 255, 255));
+        chgHourly.setText("jLabel11");
 
-        jLabel11.setBackground(new java.awt.Color(255, 255, 153));
-        jLabel11.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        jLabel11.setText("jLabel11");
+        chgTotal.setBackground(new java.awt.Color(255, 255, 153));
+        chgTotal.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        chgTotal.setForeground(new java.awt.Color(255, 255, 255));
+        chgTotal.setText("jLabel12");
 
-        jLabel12.setBackground(new java.awt.Color(255, 255, 153));
-        jLabel12.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        jLabel12.setText("jLabel12");
-
-        jButton1.setBackground(new java.awt.Color(153, 153, 255));
+        jButton1.setBackground(new java.awt.Color(94, 237, 181));
         jButton1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Ok");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
+        lblParkedTime.setBackground(new java.awt.Color(255, 255, 153));
+        lblParkedTime.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        lblParkedTime.setForeground(new java.awt.Color(255, 255, 255));
+        lblParkedTime.setText("Parked Time :");
+
+        chgParkedTime.setBackground(new java.awt.Color(255, 255, 153));
+        chgParkedTime.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        chgParkedTime.setForeground(new java.awt.Color(255, 255, 255));
+        chgParkedTime.setText("jLabel10");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblParkedTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(chgParkedTime, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(chgName, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblLicense, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(chgLicense, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblHourly, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(chgHourly, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblTime, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(chgTime, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(chgTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblName)
+                    .addComponent(chgName))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblLicense)
+                    .addComponent(chgLicense))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblParkedTime)
+                    .addComponent(chgParkedTime))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTime)
+                    .addComponent(chgTime))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblHourly)
+                    .addComponent(chgHourly))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTotal)
+                    .addComponent(chgTotal))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addGap(14, 14, 14))
+        );
+
+        jPanel2.setBackground(new java.awt.Color(38, 38, 67));
+        jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
+        jPanel2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel2MouseDragged(evt);
+            }
+        });
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel2MousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 26, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(32, 32, 32)
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addComponent(jButton1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel12))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         setVisible(false); //you can't see me!
-        dispose(); //Destroy the JFrame object TODO add your handling code here:
+        dispose(); //Destroy the JFrame object
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jPanel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MousePressed
+        // TODO add your handling code here:
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_jPanel2MousePressed
+
+    private void jPanel2MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+
+        this.setLocation(x- xMouse,y-yMouse);
+    }//GEN-LAST:event_jPanel2MouseDragged
 
     /**
      * @param args the command line arguments
@@ -213,20 +295,33 @@ public class viewPreviousGUI extends javax.swing.JFrame {
             }
         });
     }
-
+    // update the data on application load
+    public void load(){
+        try{
+        chgName.setText(tempData.tail.Name);
+        chgLicense.setText(tempData.tail.LicenseNumber);
+        chgHourly.setText(Integer.toString(tempData.tail.ParkedSpot));
+        chgTotal.setText(tempData.tail.Name);
+        } catch(Exception e){
+        chgName.setText("null");
+        }
+    
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel chgHourly;
+    private javax.swing.JLabel chgLicense;
+    private javax.swing.JLabel chgName;
+    private javax.swing.JLabel chgParkedTime;
+    private javax.swing.JLabel chgTime;
+    private javax.swing.JLabel chgTotal;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblHourly;
+    private javax.swing.JLabel lblLicense;
+    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblParkedTime;
+    private javax.swing.JLabel lblTime;
+    private javax.swing.JLabel lblTotal;
     // End of variables declaration//GEN-END:variables
 }
