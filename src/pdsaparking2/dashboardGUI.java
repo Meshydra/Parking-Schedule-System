@@ -77,11 +77,12 @@ public class dashboardGUI extends javax.swing.JFrame {
         txtTime = new javax.swing.JLabel();
         lblLicense = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbSearch = new javax.swing.JComboBox<>();
         lblParkSpot1 = new javax.swing.JLabel();
-        btnDelete1 = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
         btnRefreshTime = new javax.swing.JButton();
         lblParkTime1 = new javax.swing.JLabel();
+        btnView1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 0));
@@ -249,7 +250,7 @@ public class dashboardGUI extends javax.swing.JFrame {
                 btnAddActionPerformed(evt);
             }
         });
-        pnlBody.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 200, -1));
+        pnlBody.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 160, -1));
 
         btnRefreshSpot.setBackground(new java.awt.Color(94, 237, 181));
         btnRefreshSpot.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -260,6 +261,14 @@ public class dashboardGUI extends javax.swing.JFrame {
         btnRefreshSpot.setMaximumSize(new java.awt.Dimension(30, 30));
         btnRefreshSpot.setMinimumSize(new java.awt.Dimension(30, 30));
         btnRefreshSpot.setPreferredSize(new java.awt.Dimension(30, 30));
+        btnRefreshSpot.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                btnRefreshSpotFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                btnRefreshSpotFocusLost(evt);
+            }
+        });
         btnRefreshSpot.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnRefreshSpotMouseClicked(evt);
@@ -275,15 +284,15 @@ public class dashboardGUI extends javax.swing.JFrame {
         btnView.setBackground(new java.awt.Color(94, 237, 181));
         btnView.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnView.setForeground(new java.awt.Color(255, 255, 255));
-        btnView.setText("View Ticket");
         btnView.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnView.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnView.setLabel("Clear");
         btnView.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewActionPerformed(evt);
             }
         });
-        pnlBody.add(btnView, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 300, 190, -1));
+        pnlBody.add(btnView, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 300, 150, -1));
 
         txtSlots.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         txtSlots.setForeground(new java.awt.Color(255, 255, 255));
@@ -319,7 +328,12 @@ public class dashboardGUI extends javax.swing.JFrame {
         jLabel10.setText("/50");
         pnlBody.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 160, 87, 30));
 
-        pnlBody.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 50, 200, 30));
+        cmbSearch.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbSearchItemStateChanged(evt);
+            }
+        });
+        pnlBody.add(cmbSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 50, 200, 30));
 
         lblParkSpot1.setBackground(new java.awt.Color(244, 250, 255));
         lblParkSpot1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -327,18 +341,24 @@ public class dashboardGUI extends javax.swing.JFrame {
         lblParkSpot1.setText("Park Spot");
         pnlBody.add(lblParkSpot1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, 100, -1));
 
-        btnDelete1.setBackground(new java.awt.Color(94, 237, 181));
-        btnDelete1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnDelete1.setForeground(new java.awt.Color(255, 255, 255));
-        btnDelete1.setText("Delete Ticket");
-        btnDelete1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnDelete1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnDelete1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDelete1ActionPerformed(evt);
+        btnDelete.setBackground(new java.awt.Color(94, 237, 181));
+        btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
+        btnDelete.setText("Delete Ticket");
+        btnDelete.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDelete.setPreferredSize(new java.awt.Dimension(102, 29));
+        btnDelete.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDeleteMouseClicked(evt);
             }
         });
-        pnlBody.add(btnDelete1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, 200, -1));
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+        pnlBody.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, 160, -1));
 
         btnRefreshTime.setBackground(new java.awt.Color(94, 237, 181));
         btnRefreshTime.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -349,6 +369,14 @@ public class dashboardGUI extends javax.swing.JFrame {
         btnRefreshTime.setMaximumSize(new java.awt.Dimension(30, 30));
         btnRefreshTime.setMinimumSize(new java.awt.Dimension(30, 30));
         btnRefreshTime.setPreferredSize(new java.awt.Dimension(30, 31));
+        btnRefreshTime.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                btnRefreshTimeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                btnRefreshTimeFocusLost(evt);
+            }
+        });
         btnRefreshTime.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnRefreshTimeMouseClicked(evt);
@@ -366,6 +394,19 @@ public class dashboardGUI extends javax.swing.JFrame {
         lblParkTime1.setForeground(new java.awt.Color(244, 250, 255));
         lblParkTime1.setText("Parked Time");
         pnlBody.add(lblParkTime1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 100, -1));
+
+        btnView1.setBackground(new java.awt.Color(94, 237, 181));
+        btnView1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnView1.setForeground(new java.awt.Color(255, 255, 255));
+        btnView1.setText("View Ticket");
+        btnView1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnView1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnView1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnView1ActionPerformed(evt);
+            }
+        });
+        pnlBody.add(btnView1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, 150, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -395,9 +436,7 @@ public class dashboardGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNameActionPerformed
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
-
-        viewPreviousGUI pn = new viewPreviousGUI();
-        pn.setVisible(true);        // TODO add your handling code here:
+        clear();
     }//GEN-LAST:event_btnViewActionPerformed
 
     private void btnRefreshSpotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshSpotActionPerformed
@@ -491,20 +530,28 @@ public class dashboardGUI extends javax.swing.JFrame {
 
     private void btnAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddMouseClicked
         // TODO add your handling code here:
+        
         //validation guard clauses
          if(txtName.getText().isEmpty() || txtLicense.getText().isEmpty() || txtParkSpot.getText().isEmpty() || txtParked.getText().isEmpty()) {
         JOptionPane.showMessageDialog(this, "Please fill in all fields.", "Error", JOptionPane.ERROR_MESSAGE);
         return;
-    }
-         
+    }        
         //add function passes as follows name, vehicle number, license,park time, park spot          
         tempData.add(txtName.getText(), txtLicense.getText(), txtParked.getText(), Integer.parseInt(txtParkSpot.getText()));
         updateSlot(1);
+        
+        //adds the name to the combo box so the user can search 
+        cmbSearch.addItem(txtName.getText());
+        
+        //clean ui
+        clear();
+        // feedback to the user
+        JOptionPane.showMessageDialog(this, "Ticket successfully added.", "Success", JOptionPane.INFORMATION_MESSAGE);        
     }//GEN-LAST:event_btnAddMouseClicked
 
-    private void btnDelete1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelete1ActionPerformed
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnDelete1ActionPerformed
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnRefreshTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshTimeActionPerformed
         // TODO add your handling code here:
@@ -521,6 +568,60 @@ public class dashboardGUI extends javax.swing.JFrame {
         txtParkSpot.setText(Integer.toString(available));
         
     }//GEN-LAST:event_btnRefreshSpotMouseClicked
+
+    private void btnRefreshTimeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnRefreshTimeFocusGained
+        // TODO add your handling code here:
+        fieldHover(txtParked);
+    }//GEN-LAST:event_btnRefreshTimeFocusGained
+
+    private void btnRefreshTimeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnRefreshTimeFocusLost
+        // TODO add your handling code here:
+        fieldLeave(txtParked);
+    }//GEN-LAST:event_btnRefreshTimeFocusLost
+
+    private void btnRefreshSpotFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnRefreshSpotFocusGained
+        // TODO add your handling code here:
+        fieldHover(txtParkSpot);
+    }//GEN-LAST:event_btnRefreshSpotFocusGained
+
+    private void btnRefreshSpotFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_btnRefreshSpotFocusLost
+        // TODO add your handling code here:
+        fieldLeave(txtParkSpot);
+    }//GEN-LAST:event_btnRefreshSpotFocusLost
+
+    private void btnDeleteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDeleteMouseClicked
+        // TODO add your handling code here:
+        //validation guard clauses
+         if(txtName.getText().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Invalid or Incorrect Name", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }    
+        
+        tempData.deleteByName(txtName.getText());
+        
+        JOptionPane.showMessageDialog(this, "Ticket successfully deleted.", "Success", JOptionPane.INFORMATION_MESSAGE);
+        cmbSearch.removeItem(txtName.getText());
+        
+        clear();
+                
+    }//GEN-LAST:event_btnDeleteMouseClicked
+
+    private void cmbSearchItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbSearchItemStateChanged
+        // TODO add your handling code here:
+        String selectedValue = cmbSearch.getSelectedItem().toString();
+        //make a new node to access the properties of the return value
+        Node current = tempData.searchByName(selectedValue);
+        
+        txtName.setText(current.Name);
+        txtLicense.setText(current.LicenseNumber);
+        txtParked.setText(current.ParkedTime);
+        txtParkSpot.setText(Integer.toString(current.ParkedSpot));      
+        
+    }//GEN-LAST:event_cmbSearchItemStateChanged
+
+    private void btnView1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnView1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnView1ActionPerformed
 
     
     
@@ -609,16 +710,24 @@ public class dashboardGUI extends javax.swing.JFrame {
         slots = slots + number;
         txtSlots.setText(Integer.toString(slots));
         
-    }    
+    }
+    
+    private void clear(){
+        txtName.setText(null);
+        txtLicense.setText(null);
+        txtParked.setText(null);
+        txtParkSpot.setText(null); 
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JLabel btnClose;
-    private javax.swing.JButton btnDelete1;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnRefreshSpot;
     private javax.swing.JButton btnRefreshTime;
     private javax.swing.JButton btnView;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton btnView1;
+    private javax.swing.JComboBox<String> cmbSearch;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel lblLicense;

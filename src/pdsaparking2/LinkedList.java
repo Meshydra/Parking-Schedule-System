@@ -65,6 +65,52 @@ public class LinkedList {
     }
 }
     
+    public void deleteByName(String name) {
+    // If the list is empty, there's nothing to delete
+    if (head == null) {
+        return;
+    }
+
+    // If the head node has the target name, remove it
+    if (head.Name.equals(name)) {
+        head = head.next;
+        if (head == null) {
+            tail = null;
+        }
+        return;
+    }
+
+    // Traverse the list to find the node with the target name
+    Node current = head;
+    while (current.next != null && !current.next.Name.equals(name)) {
+        current = current.next;
+    }
+
+    // If the node is found, remove it
+    if (current.next != null) {
+        current.next = current.next.next;
+        // If the tail node is removed, update the tail
+        if (current.next == null) {
+            tail = current;
+        }
+    }
+}
+    
+    public Node searchByName(String name) {
+    // Traverse the list to find the node with the target name
+    Node current = head;
+    while (current != null && !current.Name.equals(name)) {
+        current = current.next;
+    }
+
+    // If the node is found, return it
+    if (current != null) {
+        return current;
+    } else {
+        return null;
+    }
+}
+    
     public int availableParkSpot() {
     // Check if the list is empty
     if (tempData.head == null) {
