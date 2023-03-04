@@ -34,6 +34,7 @@ public class dashboardGUI extends javax.swing.JFrame {
     
     //keep track of how many slots are remaining
     int slots;
+    String timeString;
     
     public dashboardGUI() {
         initComponents();
@@ -83,6 +84,8 @@ public class dashboardGUI extends javax.swing.JFrame {
         btnRefreshTime = new javax.swing.JButton();
         lblParkTime1 = new javax.swing.JLabel();
         btnView1 = new javax.swing.JButton();
+        txtHourly = new javax.swing.JSpinner();
+        lblRemaining1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 0));
@@ -159,8 +162,8 @@ public class dashboardGUI extends javax.swing.JFrame {
 
         lblRemaining.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblRemaining.setForeground(new java.awt.Color(255, 255, 255));
-        lblRemaining.setText("Remaining Slots");
-        pnlBody.add(lblRemaining, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, 150, -1));
+        lblRemaining.setText("Hourly Rate");
+        pnlBody.add(lblRemaining, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 210, 150, -1));
 
         txtName.setBackground(new java.awt.Color(58, 58, 77));
         txtName.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
@@ -401,12 +404,23 @@ public class dashboardGUI extends javax.swing.JFrame {
         btnView1.setText("View Ticket");
         btnView1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnView1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnView1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnView1MouseClicked(evt);
+            }
+        });
         btnView1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnView1ActionPerformed(evt);
             }
         });
         pnlBody.add(btnView1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, 150, -1));
+        pnlBody.add(txtHourly, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 240, 80, -1));
+
+        lblRemaining1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblRemaining1.setForeground(new java.awt.Color(255, 255, 255));
+        lblRemaining1.setText("Remaining Slots");
+        pnlBody.add(lblRemaining1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, 150, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -602,6 +616,8 @@ public class dashboardGUI extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Ticket successfully deleted.", "Success", JOptionPane.INFORMATION_MESSAGE);
         cmbSearch.removeItem(txtName.getText());
         
+        updateSlot(-1);
+        
         clear();
                 
     }//GEN-LAST:event_btnDeleteMouseClicked
@@ -622,6 +638,27 @@ public class dashboardGUI extends javax.swing.JFrame {
     private void btnView1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnView1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnView1ActionPerformed
+
+    private void btnView1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnView1MouseClicked
+        // TODO add your handling code here:
+        // makes sure the text is not empty
+        if(txtName.getText().isEmpty()){
+        JOptionPane.showMessageDialog(this, "Please fill Name", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+        }
+        // saves and searches the name in the list
+        String name= txtName.getText();
+        Node current = tempData.searchByName(name);
+        
+        if(current == null){
+          JOptionPane.showMessageDialog(this, "Invalid or Incorrect Name", "Error", JOptionPane.ERROR_MESSAGE);
+          return;
+        }
+        int hourly = (int) txtHourly.getValue();
+        viewPreviousGUI view = new viewPreviousGUI(current.Name, current.LicenseNumber, current.ParkedTime, Integer.toString(current.ParkedSpot), timeString, hourly);
+        view.setVisible(true);
+        
+    }//GEN-LAST:event_btnView1MouseClicked
 
     
     
@@ -700,7 +737,7 @@ public class dashboardGUI extends javax.swing.JFrame {
     int seconds = calendar.get(Calendar.SECOND);
 
     // format the time as a string
-    String timeString = String.format("%02d:%02d:%02d", hours, minutes, seconds);
+    timeString = String.format("%02d:%02d:%02d", hours, minutes, seconds);
 
     // update the JLabel text
     txtTime.setText(timeString);
@@ -736,8 +773,10 @@ public class dashboardGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblParkTime;
     private javax.swing.JLabel lblParkTime1;
     private javax.swing.JLabel lblRemaining;
+    private javax.swing.JLabel lblRemaining1;
     private javax.swing.JPanel pnlBody;
     private javax.swing.JPanel pnlNavigation;
+    private javax.swing.JSpinner txtHourly;
     private javax.swing.JTextField txtLicense;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtParkSpot;
