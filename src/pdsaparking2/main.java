@@ -17,6 +17,7 @@ public class main {
         // TODO code application logic here
         loadingGUI LS1 = new loadingGUI();
         LS1.setVisible(true);
+        
         loadingGUI.fill();
         LS1.setVisible(false);
         
